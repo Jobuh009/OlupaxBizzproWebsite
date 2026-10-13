@@ -38,8 +38,9 @@
 
     .site-header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid rgba(229, 234, 227, .8); background: rgba(248, 249, 246, .92); backdrop-filter: blur(18px); }
     .nav-wrap { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .brand { display: inline-flex; align-items: center; text-decoration: none; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
     .brand img { display: block; width: 68px; height: 62px; object-fit: contain; }
+    .brand-name { color: var(--ink); font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 850; letter-spacing: -.055em; line-height: 1; }
     .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.7vw, 34px); }
     .nav-links a { color: #435047; font-size: .88rem; font-weight: 650; text-decoration: none; }
     .nav-links a:hover { color: var(--green-dark); }
@@ -183,6 +184,8 @@
     @media (max-width: 600px) {
       .container { width: min(100% - 34px, 1160px); }
       .nav-wrap { min-height: 70px; flex-wrap: wrap; gap: 9px; padding-block: 12px; }
+      .brand { gap: 9px; }
+      .brand-name { font-size: 1.25rem; }
       .nav-links { width: 100%; justify-content: flex-start; flex-wrap: wrap; gap: 10px 16px; padding-bottom: 2px; }
       .nav-links a { font-size: .77rem; }
       .nav-links .nav-cta { padding: 8px 12px; }
@@ -217,6 +220,7 @@
     <div class="container nav-wrap">
       <a class="brand" href="#home" aria-label="OLUPAX BIZZPRO home">
         <img src="assets/olupax-logo.png" alt="OLUPAX BIZZPRO logo">
+        <span class="brand-name">OLUPAX BIZZPRO</span>
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#services">What we do</a>
