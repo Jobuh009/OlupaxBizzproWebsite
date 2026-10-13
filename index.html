@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111713">
+  <meta name="description" content="OLUPAX BIZZPRO connects people with computer products, digital services, technical skills and professional work from Homa Bay, Kenya.">
+  <link rel="icon" type="image/png" href="assets/olupax-logo.png">
+  <meta property="og:title" content="OLUPAX BIZZPRO — Ideas, skills & connection">
+  <meta property="og:description" content="Discover computer products, showcase your skills and connect with people around the world.">
+  <meta property="og:type" content="website">
+  <title>OLUPAX BIZZPRO — Ideas, skills &amp; connection</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17211b;
+      --muted: #647168;
+      --paper: #f8f9f6;
+      --white: #fff;
+      --green: #c8f169;
+      --green-dark: #45651d;
+      --line: #e5eae3;
+      --night: #111713;
+      --radius: 22px;
+      --shadow: 0 24px 70px rgba(26, 39, 29, .09);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); line-height: 1.6; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #8bbd35; outline-offset: 4px; border-radius: 4px; }
+    .container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green-dark); font-size: .76rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { width: 20px; height: 2px; background: currentColor; content: ""; }
+
+    .site-header { position: sticky; z-index: 10; top: 0; border-bottom: 1px solid rgba(229, 234, 227, .8); background: rgba(248, 249, 246, .92); backdrop-filter: blur(18px); }
+    .nav-wrap { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; text-decoration: none; }
+    .brand img { display: block; width: 68px; height: 62px; object-fit: contain; }
+    .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.7vw, 34px); }
+    .nav-links a { color: #435047; font-size: .88rem; font-weight: 650; text-decoration: none; }
+    .nav-links a:hover { color: var(--green-dark); }
+    .nav-links .nav-cta { padding: 11px 17px; border-radius: 999px; color: var(--white); background: var(--night); }
+    .nav-links .nav-cta:hover { color: var(--night); background: var(--green); }
+
+    .hero { position: relative; overflow: hidden; padding: 88px 0 92px; color: var(--white); background: var(--night); }
+    .hero::before, .hero::after { position: absolute; border: 1px solid rgba(200, 241, 105, .12); border-radius: 50%; content: ""; pointer-events: none; }
+    .hero::before { width: 540px; height: 540px; top: -280px; right: -140px; }
+    .hero::after { width: 390px; height: 390px; top: -205px; right: -65px; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 64px; }
+    .hero .eyebrow { color: var(--green); }
+    .hero h1 { max-width: 700px; margin: 22px 0; font-size: clamp(3rem, 6.6vw, 5.7rem); font-weight: 720; letter-spacing: -.075em; line-height: .99; }
+    .hero h1 span { color: var(--green); }
+    .hero-copy { max-width: 565px; color: #c0c9c1; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 31px; }
+    .button { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 20px; border: 1px solid transparent; border-radius: 999px; font-size: .91rem; font-weight: 750; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: var(--night); background: var(--green); }
+    .button-primary:hover { background: #d8ff8a; }
+    .button-ghost { border-color: #455047; color: var(--white); }
+    .button-ghost:hover { border-color: var(--green); }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 28px; color: #aab5ac; font-size: .8rem; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(200, 241, 105, .12); }
+
+    .showcase { position: relative; min-height: 390px; display: grid; place-items: center; }
+    .showcase-orbit { position: absolute; width: 350px; height: 350px; border: 1px solid rgba(200, 241, 105, .2); border-radius: 50%; }
+    .showcase-orbit::before, .showcase-orbit::after { position: absolute; inset: 28px; border: 1px dashed rgba(200, 241, 105, .15); border-radius: inherit; content: ""; }
+    .showcase-orbit::after { inset: 76px; border-style: solid; opacity: .65; }
+    .showcase-card { position: relative; z-index: 1; width: min(100%, 360px); padding: 25px; border: 1px solid rgba(255,255,255,.13); border-radius: 25px; background: linear-gradient(145deg, rgba(43, 56, 45, .98), rgba(26, 36, 29, .98)); box-shadow: 0 28px 80px rgba(0,0,0,.32); transform: rotate(-3deg); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; color: #c8d2c8; font-size: .75rem; }
+    .card-pill { padding: 6px 10px; border-radius: 99px; color: var(--green); background: rgba(200,241,105,.1); font-size: .67rem; font-weight: 750; }
+    .profile-art { position: relative; min-height: 178px; display: grid; overflow: hidden; place-items: center; margin: 22px 0; border-radius: 18px; background: radial-gradient(ellipse at 72% 25%, rgba(200,241,105,.52), transparent 9%), radial-gradient(ellipse at 28% 78%, rgba(83,130,81,.6), transparent 26%), linear-gradient(135deg, #506d4c, #18241c 68%); }
+    .profile-art::before, .profile-art::after { position: absolute; width: 138px; height: 138px; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; content: ""; }
+    .profile-art::after { width: 190px; height: 190px; border-color: rgba(200,241,105,.4); }
+    .profile-symbol { z-index: 1; color: var(--green); font-size: 4rem; font-weight: 250; letter-spacing: -.15em; }
+    .profile-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .profile-meta strong { display: block; color: #fff; font-size: 1rem; }
+    .profile-meta small { color: #aab5ac; font-size: .77rem; }
+    .mini-avatars { display: flex; padding-left: 8px; }
+    .mini-avatars i { width: 28px; height: 28px; display: grid; place-items: center; margin-left: -8px; border: 2px solid #263329; border-radius: 50%; color: var(--night); background: var(--green); font-size: .63rem; font-style: normal; font-weight: 800; }
+    .float-tag { position: absolute; z-index: 2; display: flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.12); border-radius: 99px; color: #eaf0e9; background: #263329; box-shadow: 0 12px 28px rgba(0,0,0,.22); font-size: .76rem; font-weight: 700; }
+    .float-tag span { color: var(--green); }
+    .float-one { top: 46px; left: -7px; }
+    .float-two { right: -10px; bottom: 42px; }
+
+    .trust-strip { border-bottom: 1px solid var(--line); background: var(--white); }
+    .trust-inner { min-height: 86px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .trust-label { color: var(--muted); font-size: .78rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
+    .trust-items { display: flex; flex-wrap: wrap; gap: 12px 30px; color: #344138; font-size: .87rem; font-weight: 700; }
+    .trust-items span { display: inline-flex; align-items: center; gap: 8px; }
+    .trust-items b { color: #6c922f; font-size: 1rem; }
+
+    section.content-section { padding: 98px 0; }
+    .section-heading { max-width: 650px; margin-bottom: 42px; }
+    .section-heading h2 { margin: 15px 0 13px; font-size: clamp(2.15rem, 4vw, 3.4rem); letter-spacing: -.06em; line-height: 1.08; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 1rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card { min-height: 255px; display: flex; flex-direction: column; align-items: flex-start; padding: 27px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); transition: transform .2s ease, box-shadow .2s ease; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .service-icon { width: 49px; height: 49px; display: grid; place-items: center; border-radius: 16px; color: #3c5e20; background: #f0f7e6; font-size: 1.35rem; }
+    .service-status { margin-top: 18px; color: #45651d; font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .service-status.available { color: #236844; }
+    .service-status.coming-soon { color: #78561e; }
+    .service-card h3 { margin: 21px 0 8px; font-size: 1.13rem; letter-spacing: -.025em; }
+    .service-card p { margin: 0; color: var(--muted); font-size: .91rem; }
+    .service-link { margin-top: auto; padding-top: 19px; color: var(--green-dark); font-size: .81rem; font-weight: 800; text-decoration: none; }
+
+    .about-section { color: var(--white); background: #1b261e; }
+    .about-grid { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 75px; }
+    .about-visual { position: relative; min-height: 370px; display: grid; overflow: hidden; place-items: center; border-radius: 28px; background: radial-gradient(circle at 50% 48%, rgba(200,241,105,.18), transparent 32%), linear-gradient(145deg, #35493a, #172119); }
+    .about-visual::before, .about-visual::after { position: absolute; width: 260px; height: 260px; border: 1px solid rgba(200,241,105,.24); border-radius: 50%; content: ""; }
+    .about-visual::after { width: 340px; height: 340px; border-color: rgba(255,255,255,.13); }
+    .about-monogram { z-index: 1; color: var(--green); font-size: clamp(4rem, 9vw, 7rem); font-weight: 800; letter-spacing: -.1em; }
+    .about-stamp { position: absolute; right: 20px; bottom: 20px; z-index: 2; padding: 11px 15px; border-radius: 99px; color: var(--night); background: var(--green); font-size: .75rem; font-weight: 800; }
+    .about-copy .eyebrow { color: var(--green); }
+    .about-copy h2 { margin: 15px 0; font-size: clamp(2.25rem, 4vw, 3.5rem); letter-spacing: -.065em; line-height: 1.05; }
+    .about-copy > p { color: #bdc7be; font-size: .97rem; }
+    .values-list { display: grid; grid-template-columns: 1fr 1fr; gap: 17px 24px; margin: 28px 0 0; padding: 0; list-style: none; }
+    .values-list li { display: flex; align-items: flex-start; gap: 10px; color: #e4ebe4; font-size: .86rem; }
+    .values-list b { color: var(--green); }
+
+    .profile-section { background: #eef2eb; }
+    .profile-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 55px; align-items: start; }
+    .profile-intro h2 { margin: 15px 0; font-size: clamp(2.15rem, 4vw, 3.25rem); letter-spacing: -.065em; line-height: 1.08; }
+    .profile-intro p { color: var(--muted); }
+    .profile-note { margin-top: 25px; padding: 17px 18px; border-left: 3px solid #8dbb3b; border-radius: 0 14px 14px 0; color: #4e5d50; background: rgba(255,255,255,.72); font-size: .85rem; }
+    .details-card { padding: 12px 27px; border: 1px solid #e2e8de; border-radius: var(--radius); background: var(--white); }
+    .detail-row { display: grid; grid-template-columns: minmax(130px, .75fr) 1.25fr; gap: 24px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .detail-row:last-child { border-bottom: 0; }
+    .detail-row dt { color: var(--muted); font-size: .83rem; font-weight: 650; }
+    .detail-row dd { margin: 0; color: #26352a; font-size: .88rem; font-weight: 700; overflow-wrap: anywhere; }
+    .detail-row dd small { display: block; margin-top: 3px; color: var(--muted); font-size: .79rem; font-weight: 500; }
+
+    .contact-section { padding: 96px 0; }
+    .contact-panel { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 35px 45px; padding: clamp(30px, 5.5vw, 64px); border-radius: 30px; color: var(--white); background: var(--night); }
+    .contact-panel::after { position: absolute; width: 350px; height: 350px; right: -170px; bottom: -225px; border: 1px solid rgba(200,241,105,.22); border-radius: 50%; box-shadow: 0 0 0 36px rgba(200,241,105,.035), 0 0 0 72px rgba(200,241,105,.025); content: ""; pointer-events: none; }
+    .contact-copy { position: relative; z-index: 1; }
+    .contact-copy .eyebrow { color: var(--green); }
+    .contact-copy h2 { max-width: 550px; margin: 15px 0; font-size: clamp(2.3rem, 4.5vw, 3.8rem); letter-spacing: -.07em; line-height: 1.03; }
+    .contact-copy p { max-width: 480px; margin-bottom: 26px; color: #b6c1b8; }
+    .contact-details { position: relative; z-index: 1; display: grid; align-content: center; gap: 14px; }
+    .contact-item { padding: 16px 18px; border: 1px solid #354238; border-radius: 16px; background: rgba(255,255,255,.035); }
+    .contact-item span { display: block; margin-bottom: 4px; color: #9eaaa0; font-size: .72rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    .contact-item a, .contact-item address { color: #f4f6f2; font-size: .91rem; font-style: normal; font-weight: 650; text-decoration: none; overflow-wrap: anywhere; }
+    .contact-item a:hover { color: var(--green); }
+    .enquiry-form { position: relative; z-index: 1; display: grid; gap: 9px; padding: 22px; border: 1px solid #354238; border-radius: 18px; background: rgba(255,255,255,.045); }
+    .enquiry-form h3 { margin: 0 0 6px; font-size: 1.12rem; }
+    .enquiry-form label { margin-top: 4px; color: #d9e1da; font-size: .8rem; font-weight: 700; }
+    .enquiry-form input, .enquiry-form select, .enquiry-form textarea { width: 100%; min-height: 43px; padding: 10px 12px; border: 1px solid #526055; border-radius: 10px; color: #f4f6f2; background: #19221b; font: inherit; font-size: .88rem; }
+    .enquiry-form textarea { min-height: 100px; resize: vertical; }
+    .enquiry-form input:focus, .enquiry-form select:focus, .enquiry-form textarea:focus { outline: 2px solid var(--green); outline-offset: 2px; }
+    .enquiry-form option { color: #17211b; background: #fff; }
+    .enquiry-form button { justify-self: start; margin-top: 6px; cursor: pointer; }
+    .form-note { margin: 3px 0 0; color: #aeb9b0; font-size: .75rem; line-height: 1.55; }
+    .form-note a { color: var(--green); }
+    .form-status { min-height: 1em; margin: 0; color: var(--green); font-size: .78rem; }
+    .contact-details { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .social-links { grid-column: 1 / -1; }
+    .social-links { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 3px; }
+    .social-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 13px; border: 1px solid #455047; border-radius: 99px; color: #e8eee8; font-size: .76rem; font-weight: 700; text-decoration: none; }
+    .social-links a:hover { border-color: var(--green); color: var(--green); }
+
+    .site-footer { padding: 25px 0; color: #a6b0a7; background: #0c110e; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .footer-inner p { margin: 0; font-size: .77rem; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-nav a { color: #c4cdc4; font-size: .77rem; text-decoration: none; }
+
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero { padding: 72px 0 55px; }
+      .showcase { min-height: 360px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .profile-layout { grid-template-columns: 1fr; gap: 38px; }
+      .about-visual { min-height: 300px; }
+      .contact-panel { grid-template-columns: 1fr; gap: 28px; }
+      .enquiry-form, .contact-details { grid-column: auto; }
+      .trust-inner { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 20px; }
+    }
+    @media (max-width: 600px) {
+      .container { width: min(100% - 34px, 1160px); }
+      .nav-wrap { min-height: 70px; flex-wrap: wrap; gap: 9px; padding-block: 12px; }
+      .nav-links { width: 100%; justify-content: flex-start; flex-wrap: wrap; gap: 10px 16px; padding-bottom: 2px; }
+      .nav-links a { font-size: .77rem; }
+      .nav-links .nav-cta { padding: 8px 12px; }
+      .hero { padding-top: 60px; }
+      .hero h1 { font-size: clamp(2.75rem, 13vw, 4rem); }
+      .hero-copy { font-size: .98rem; }
+      .showcase { min-height: 330px; }
+      .showcase-orbit { width: 290px; height: 290px; }
+      .showcase-card { width: min(88%, 340px); padding: 19px; }
+      .profile-art { min-height: 145px; }
+      .float-one { top: 27px; left: 0; }
+      .float-two { right: 0; bottom: 23px; }
+      section.content-section { padding: 72px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 225px; }
+      .values-list { grid-template-columns: 1fr; }
+      .detail-row { grid-template-columns: 1fr; gap: 3px; }
+      .details-card { padding-inline: 19px; }
+      .contact-details { grid-template-columns: 1fr; }
+      .contact-section { padding: 70px 0; }
+      .contact-panel { padding: 28px 21px; border-radius: 23px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+      .footer-nav { gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="OLUPAX BIZZPRO home">
+        <img src="assets/olupax-logo.png" alt="OLUPAX BIZZPRO logo">
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#services">What we do</a>
+        <a href="#about">Our approach</a>
+        <a href="#profile">Business info</a>
+        <a href="policies.html">Privacy &amp; safety</a>
+        <a class="nav-cta" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Digital services · Homa Bay, Kenya</span>
+          <h1>Ideas, skills<br>and <span>connection.</span></h1>
+          <p class="hero-copy">OLUPAX BIZZPRO brings people and possibilities together — from computer products and technical talent to a more open space for social connection.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://wa.me/254112272173?text=Hello%20OLUPAX%20BIZZPRO%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
+            <a class="button button-ghost" href="#services">Explore what we do <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note"><span class="status-dot" aria-hidden="true"></span> Rooted in Homa Bay. Open to the world.</div>
+        </div>
+        <div class="showcase" aria-label="Illustration of a professional profile and community">
+          <div class="showcase-orbit" aria-hidden="true"></div>
+          <div class="float-tag float-one"><span>✳</span> Skills worth sharing</div>
+          <div class="showcase-card">
+            <div class="card-top"><span>OLUPAX COMMUNITY</span><span class="card-pill">OPEN &amp; INCLUSIVE</span></div>
+            <div class="profile-art" aria-hidden="true"><span class="profile-symbol">O+</span></div>
+            <div class="profile-meta">
+              <div><strong>Your next idea starts here</strong><small>People · projects · possibilities</small></div>
+              <div class="mini-avatars" aria-hidden="true"><i>O</i><i>+</i><i>∞</i></div>
+            </div>
+          </div>
+          <div class="float-tag float-two"><span>↗</span> Made for making connections</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-inner">
+        <span class="trust-label">A business built around</span>
+        <div class="trust-items">
+          <span><b>✳</b> Useful technology</span>
+          <span><b>✳</b> Shared skills</span>
+          <span><b>✳</b> Human connection</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="content-section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">What we do</span>
+          <h2>Digital possibilities,<br>made more personal.</h2>
+          <p>Here’s what you can use today and what is still being developed. We’ll update this page as more services become available.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">⌘</span>
+            <div class="service-status">Enquiries open</div>
+            <h3>Computer products</h3>
+            <p>Ask about computers, components and accessories. Stock, specifications, delivery and prices are confirmed individually before purchase.</p>
+            <a class="service-link" href="#contact" data-enquiry-category="Computer products">Request availability &amp; a quote <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">✳</span>
+            <div class="service-status available">Available now · XoshX</div>
+            <h3>Social connection with XoshX</h3>
+            <p>Explore OLUPAX’s social-interaction app on Google Play. The app’s features, age requirements, safety tools and privacy terms are set out in its own listing and policies.</p>
+            <a class="service-link" href="https://play.google.com/store/search?q=XoshX&amp;c=apps" target="_blank" rel="noopener noreferrer">Search XoshX on Google Play <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">↗</span>
+            <div class="service-status coming-soon">Coming soon</div>
+            <h3>Skills &amp; project showcases</h3>
+            <p>A dedicated way to publish technical skills, project samples and creative work is being developed. Contact us to register interest.</p>
+            <a class="service-link" href="#contact" data-enquiry-category="Skills and project showcases">Register interest <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">◎</span>
+            <div class="service-status coming-soon">Coming soon</div>
+            <h3>Professional services</h3>
+            <p>A searchable directory or listing service for professionals is not available on this website yet. Ask us about future access.</p>
+            <a class="service-link" href="#contact" data-enquiry-category="Professional services">Register interest <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">⌁</span>
+            <div class="service-status available">Available now</div>
+            <h3>Digital presence</h3>
+            <p>Visit the OLUPAX portfolio and contact the business directly for information, support or collaboration enquiries.</p>
+            <a class="service-link" href="https://joboluochportifolio.netlify.app/" target="_blank" rel="noopener noreferrer">Visit the portfolio <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="service-card">
+            <span class="service-icon" aria-hidden="true">♡</span>
+            <div class="service-status coming-soon">Coming soon</div>
+            <h3>Skills and community features</h3>
+            <p>Community features on this website are not available. For social interaction, use XoshX and review the app’s own safety and privacy information.</p>
+            <a class="service-link" href="policies.html#safety">Read safety guidance <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-visual" aria-hidden="true">
+          <span class="about-monogram">O+</span>
+          <span class="about-stamp">FROM HOMA BAY, KENYA</span>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">Our approach</span>
+          <h2>Technology works best when it brings people closer.</h2>
+          <p>OLUPAX BIZZPRO is a Kenyan registered business with a broad digital vision: offer computer products, encourage social interaction through XoshX, and create ways for professionals and technical talent to be discovered.</p>
+          <p>XoshX is available through Google Play. The computer-product service currently accepts enquiries; product availability and quotes are confirmed directly. Dedicated skills showcases and professional-service listings are still in development.</p>
+          <ul class="values-list">
+            <li><b>✓</b><span>Open to people across backgrounds</span></li>
+            <li><b>✓</b><span>Skills and projects deserve visibility</span></li>
+            <li><b>✓</b><span>Useful technology for everyday life</span></li>
+            <li><b>✓</b><span>Locally rooted, globally minded</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section profile-section" id="profile">
+      <div class="container profile-layout">
+        <div class="profile-intro">
+          <span class="eyebrow">Business profile</span>
+          <h2>A little more about OLUPAX.</h2>
+          <p>Clear information for customers, partners and anyone who wants to get in touch.</p>
+          <div class="profile-note">The business details below were provided by the owner and have not been independently verified. Please confirm names, registration and addresses before relying on them. Projected sales and team-size estimates are omitted because they are not needed as public customer information.</div>
+        </div>
+        <dl class="details-card">
+          <div class="detail-row"><dt>Trading name</dt><dd>OLUPAX BIZZPRO</dd></div>
+          <div class="detail-row"><dt>Legal name</dt><dd>Olupax Tech Vision and Mission</dd></div>
+          <div class="detail-row"><dt>Business type</dt><dd>Registered Business <small>Sole proprietorship</small></dd></div>
+          <div class="detail-row"><dt>Industry</dt><dd>Digital services <small>Category: Dating services</small></dd></div>
+          <div class="detail-row"><dt>Registered address</dt><dd>Cold Spring, Moi Avenue<small>Homabay, 40304, Homa Bay County, Kenya</small></dd></div>
+          <div class="detail-row"><dt>Office address</dt><dd>Cold Spring, Moi Avenue<small>Homabay, 40304, Homa Bay County, Kenya</small></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div class="contact-copy">
+            <span class="eyebrow">Let's talk</span>
+            <h2>Have an idea, enquiry or skill to share?</h2>
+            <p>Use the form to prepare an email enquiry, or contact us directly. The form opens your email app; it does not send or store anything on this website. No fixed response time is promised—call or WhatsApp for time-sensitive matters.</p>
+            <a class="button button-primary" href="https://wa.me/254112272173?text=Hello%20OLUPAX%20BIZZPRO%2C%20I%27d%20like%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">Message Job on WhatsApp <span aria-hidden="true">↗</span></a>
+          </div>
+          <form class="enquiry-form" id="enquiry-form">
+            <h3>Send an enquiry</h3>
+            <label for="enquiry-category">What is this about?</label>
+            <select id="enquiry-category" name="category" required>
+              <option value="General enquiry">General enquiry</option>
+              <option value="Computer products">Computer products / quote</option>
+              <option value="XoshX support or safety">XoshX support or safety</option>
+              <option value="Dispute">Dispute</option>
+              <option value="Skills and project showcases">Skills and project showcases</option>
+              <option value="Professional services">Professional services</option>
+              <option value="Partnership">Partnership</option>
+            </select>
+            <label for="enquiry-name">Your name</label>
+            <input id="enquiry-name" name="name" autocomplete="name" maxlength="100" required>
+            <label for="enquiry-email">Your email</label>
+            <input id="enquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+            <label for="enquiry-message">How can we help?</label>
+            <textarea id="enquiry-message" name="message" rows="4" maxlength="3000" required></textarea>
+            <button class="button button-primary" type="submit">Prepare email enquiry <span aria-hidden="true">↗</span></button>
+            <p class="form-note">Your email app will open with the message and a reference number. Review it and press Send there. Do not include passwords, payment-card details or sensitive personal information. <a href="policies.html#privacy">Privacy notice</a>.</p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="contact-details">
+            <div class="contact-item"><span>General &amp; support</span><a href="mailto:joboluoch009@gmail.com">joboluoch009@gmail.com</a></div>
+            <div class="contact-item"><span>Disputes</span><a href="mailto:joboluoch009@gmail.com,bizzpromoter@gmail.com">joboluoch009@gmail.com · bizzpromoter@gmail.com</a></div>
+            <div class="contact-item"><span>Call us</span><a href="tel:+254721869159">+254 721 869 159</a></div>
+            <div class="contact-item"><span>WhatsApp · Job Oluoch</span><a href="https://wa.me/254112272173" target="_blank" rel="noopener noreferrer">+254 112 272 173</a></div>
+            <div class="social-links" aria-label="Social media">
+              <a href="https://x.com/JobOluoch94673" target="_blank" rel="noopener noreferrer">X / Twitter ↗</a>
+              <a href="https://www.facebook.com/profile.php?id=61568646808046" target="_blank" rel="noopener noreferrer">Facebook ↗</a>
+              <a href="https://www.instagram.com/job76854?stkn=MXVkcnQZWNvMTYyMg" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+              <a href="https://joboluochportifolio.netlify.app/" target="_blank" rel="noopener noreferrer">Portfolio ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> OLUPAX BIZZPRO · Olupax Tech Vision and Mission · Homa Bay, Kenya</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#home">Back to top ↑</a>
+        <a href="mailto:joboluoch009@gmail.com">Email us</a>
+        <a href="tel:+254721869159">Call</a>
+        <a href="policies.html">Privacy &amp; safety</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    const enquiryForm = document.getElementById("enquiry-form");
+    document.querySelectorAll("[data-enquiry-category]").forEach((link) => {
+      link.addEventListener("click", () => {
+        document.getElementById("enquiry-category").value =
+          link.dataset.enquiryCategory;
+      });
+    });
+    enquiryForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!enquiryForm.reportValidity()) return;
+
+      const formData = new FormData(enquiryForm);
+      const category = String(formData.get("category"));
+      const recipients = category === "Dispute"
+        ? "joboluoch009@gmail.com,bizzpromoter@gmail.com"
+        : "joboluoch009@gmail.com";
+      const reference = `OLX-${Date.now().toString(36).toUpperCase()}`;
+      const subject = `[${reference}] ${category}`;
+      const body = [
+        `Enquiry reference: ${reference}`,
+        `Category: ${category}`,
+        `Name: ${String(formData.get("name")).trim()}`,
+        `Reply-to email: ${String(formData.get("email")).trim()}`,
+        "",
+        String(formData.get("message")).trim()
+      ].join("\n");
+      document.getElementById("form-status").textContent =
+        `Opening your email app. Include reference ${reference} if you follow up.`;
+      window.location.href = `mailto:${recipients}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</body>
+</html>
