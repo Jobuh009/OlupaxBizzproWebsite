@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111713">
+  <meta name="theme-color" content="#28191c">
   <meta name="description" content="OLUPAX BIZZPRO connects people with computer products, digital services, technical skills and professional work from Homa Bay, Kenya.">
   <link rel="icon" type="image/png" href="assets/olupax-logo.png">
   <meta property="og:title" content="OLUPAX BIZZPRO — Ideas, skills & connection">
@@ -13,14 +13,17 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #17211b;
+      --ink: #1a1517;
       --muted: #647168;
-      --paper: #f8f9f6;
+      --paper: #f8f7f7;
       --white: #fff;
       --green: #c8f169;
       --green-dark: #45651d;
       --line: #e5eae3;
-      --night: #111713;
+      --night: #28191c;
+      --red-dark: #1a0a0a;
+      --red-light: #d34d5a;
+      --red-mid: #a62d3a;
       --radius: 22px;
       --shadow: 0 24px 70px rgba(26, 39, 29, .09);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -44,13 +47,14 @@
     .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.7vw, 34px); }
     .nav-links a { color: #435047; font-size: .88rem; font-weight: 650; text-decoration: none; }
     .nav-links a:hover { color: var(--green-dark); }
-    .nav-links .nav-cta { padding: 11px 17px; border-radius: 999px; color: var(--white); background: var(--night); }
-    .nav-links .nav-cta:hover { color: var(--night); background: var(--green); }
+    .nav-links .nav-cta { padding: 11px 17px; border-radius: 999px; color: var(--white); background: var(--red-mid); }
+    .nav-links .nav-cta:hover { color: var(--white); background: var(--red-light); }
 
-    .hero { position: relative; overflow: hidden; padding: 88px 0 92px; color: var(--white); background: var(--night); }
-    .hero::before, .hero::after { position: absolute; border: 1px solid rgba(200, 241, 105, .12); border-radius: 50%; content: ""; pointer-events: none; }
+    .hero { position: relative; overflow: hidden; padding: 88px 0 92px; color: var(--white); background: var(--red-dark); }
+    .hero::before, .hero::after { position: absolute; border: 1px solid rgba(166, 45, 58, .22); border-radius: 50%; content: ""; pointer-events: none; }
     .hero::before { width: 540px; height: 540px; top: -280px; right: -140px; }
     .hero::after { width: 390px; height: 390px; top: -205px; right: -65px; }
+    .hero h1 span { color: var(--red-light); }
     .hero-grid { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 64px; }
     .hero .eyebrow { color: var(--green); }
     .hero h1 { max-width: 700px; margin: 22px 0; font-size: clamp(3rem, 6.6vw, 5.7rem); font-weight: 720; letter-spacing: -.075em; line-height: .99; }
@@ -62,6 +66,9 @@
     .button-primary { color: var(--night); background: var(--green); }
     .button-primary:hover { background: #d8ff8a; }
     .button-ghost { border-color: #455047; color: var(--white); }
+    .button-ghost:hover { border-color: var(--green); }
+    .button-danger { color: var(--white); background: #7f1d1d; border-color: var(--red-mid); }
+    .button-danger:hover { background: #5c1218; }
     .button-ghost:hover { border-color: var(--green); }
     .button-secondary { color: var(--night); background: var(--green); border-color: var(--green-dark); }
     .button-secondary:hover { background: #d8ff8a; border-color: #45651d; }
@@ -138,7 +145,7 @@
     .detail-row dd small { display: block; margin-top: 3px; color: var(--muted); font-size: .79rem; font-weight: 500; }
 
     .contact-section { padding: 96px 0; }
-    .contact-panel { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 35px 45px; padding: clamp(30px, 5.5vw, 64px); border-radius: 30px; color: var(--white); background: var(--night); }
+    .contact-panel { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 35px 45px; padding: clamp(30px, 5.5vw, 64px); border-radius: 30px; color: var(--white); background: var(--red-dark); }
     .contact-panel::after { position: absolute; width: 350px; height: 350px; right: -170px; bottom: -225px; border: 1px solid rgba(200,241,105,.22); border-radius: 50%; box-shadow: 0 0 0 36px rgba(200,241,105,.035), 0 0 0 72px rgba(200,241,105,.025); content: ""; pointer-events: none; }
     .contact-copy { position: relative; z-index: 1; }
     .contact-copy .eyebrow { color: var(--green); }
