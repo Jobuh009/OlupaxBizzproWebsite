@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111713">
+  <meta name="theme-color" content="#28191c">
   <meta name="description" content="OLUPAX BIZZPRO connects people with computer products, digital services, technical skills and professional work from Homa Bay, Kenya.">
   <link rel="icon" type="image/png" href="assets/olupax-logo.png">
   <meta property="og:title" content="OLUPAX BIZZPRO — Ideas, skills & connection">
@@ -151,6 +151,9 @@
       box-shadow: 0 18px 34px rgba(239, 93, 121, 0.24);
     }
     .button-ghost { color: #fff; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.15); }
+    .button-secondary {
+      color: #fff; background: rgba(255,255,255,0.07); border-color: rgba(255,183,120,0.38);
+    }
     .hero-note {
       display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
       color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600;
@@ -422,6 +425,9 @@
           <div class="hero-actions">
             <a class="button button-primary" href="https://wa.me/254112272173?text=Hello%20OLUPAX%20BIZZPRO%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
             <a class="button button-ghost" href="#services">Explore what we do <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="XoshP-Android_App.apk" download="XoshP-Android_App.apk">
+              <span style="font-size:1.1em;">⬇</span>&nbsp; Download Android App
+            </a>
           </div>
           <div class="hero-note"><span class="status-dot" aria-hidden="true"></span> Rooted in Homa Bay. Open to the world.</div>
         </div>
@@ -552,10 +558,10 @@
           <div class="contact-copy">
             <span class="eyebrow">Let's talk</span>
             <h2>Have an idea, enquiry or skill to share?</h2>
-            <p>Use the form to prepare an email enquiry, or contact us directly. The form opens your email app; it does not send or store anything on this website. No fixed response time is promised—call or WhatsApp for time-sensitive matters.</p>
+            <p>Send your enquiry through the form, or contact us directly. No fixed response time is promised—call or WhatsApp for time-sensitive matters.</p>
             <a class="button button-primary" href="https://wa.me/254112272173?text=Hello%20OLUPAX%20BIZZPRO%2C%20I%27d%20like%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">Message Job on WhatsApp <span aria-hidden="true">↗</span></a>
           </div>
-          <form class="enquiry-form" id="enquiry-form">
+          <form class="enquiry-form" action="https://formspree.io/f/xkjjqraj" id="enquiry-form" method="POST">
             <h3>Send an enquiry</h3>
             <label for="enquiry-category">What is this about?</label>
             <select id="enquiry-category" name="category" required>
@@ -573,9 +579,8 @@
             <input id="enquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required>
             <label for="enquiry-message">How can we help?</label>
             <textarea id="enquiry-message" name="message" rows="4" maxlength="3000" required></textarea>
-            <button class="button button-primary" type="submit">Prepare email enquiry <span aria-hidden="true">↗</span></button>
-            <p class="form-note">Your email app will open with the message and a reference number. Review it and press Send there. Do not include passwords, payment-card details or sensitive personal information. <a href="policies.html#privacy">Privacy notice</a>.</p>
-            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            <button class="button button-primary" type="submit">Send enquiry <span aria-hidden="true">↗</span></button>
+            <p class="form-note">Your message will be submitted through Formspree to OLUPAX BIZZPRO. Do not include passwords, payment-card details or sensitive personal information. <a href="policies.html#privacy">Privacy notice</a>.</p>
           </form>
           <div class="contact-details">
             <div class="contact-item"><span>General &amp; support</span><a href="mailto:joboluoch009@gmail.com">joboluoch009@gmail.com</a></div>
@@ -606,35 +611,11 @@
     </div>
   </footer>
   <script>
-    const enquiryForm = document.getElementById("enquiry-form");
     document.querySelectorAll("[data-enquiry-category]").forEach((link) => {
       link.addEventListener("click", () => {
         document.getElementById("enquiry-category").value =
           link.dataset.enquiryCategory;
       });
-    });
-    enquiryForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!enquiryForm.reportValidity()) return;
-
-      const formData = new FormData(enquiryForm);
-      const category = String(formData.get("category"));
-      const recipients = category === "Dispute"
-        ? "joboluoch009@gmail.com,bizzpromoter@gmail.com"
-        : "joboluoch009@gmail.com";
-      const reference = `OLX-${Date.now().toString(36).toUpperCase()}`;
-      const subject = `[${reference}] ${category}`;
-      const body = [
-        `Enquiry reference: ${reference}`,
-        `Category: ${category}`,
-        `Name: ${String(formData.get("name")).trim()}`,
-        `Reply-to email: ${String(formData.get("email")).trim()}`,
-        "",
-        String(formData.get("message")).trim()
-      ].join("\n");
-      document.getElementById("form-status").textContent =
-        `Opening your email app. Include reference ${reference} if you follow up.`;
-      window.location.href = `mailto:${recipients}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     });
   </script>
 </body>
